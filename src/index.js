@@ -27,6 +27,9 @@ const secondReducer = (state = [], action) => {
         console.log('Second reducer', action);
         return [ ...state, 'oreo'];
     }
+    else if (action.type === 'EAT_OREOS') {
+        return [];
+    }
     return state;
 }
 

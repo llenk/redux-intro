@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
+import ElementForm from './ElementForm';
+import ElementList from './ElementList';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      input: '',
-    };
-  }
   buttonOneClicked = () => {
     const action = {type: 'BUTTON_ONE', someProp: 'hi'};
     this.props.dispatch(action);
@@ -18,12 +14,7 @@ class App extends Component {
     const action = {type: 'REMOVE', someProp: 'hi'};
     this.props.dispatch(action);
   };
-  handleElementChange = (event) => {
-    this.setState({
-      input: event.target.value,
-    });
-    console.log(this.state.input);
-  };
+
   render() {
     return (
       <div className="App">
@@ -34,8 +25,9 @@ class App extends Component {
         <button onClick={this.buttonOneClicked}>hi</button>
         <button onClick={this.buttonMinusClicked}>minus</button>
         <button onClick={() => this.props.dispatch({type: 'BUTTON_TWO'})}>hix2</button>
-        <input onChange={this.handleElementChange} />
-        <button onClick={() => this.props.dispatch({type: 'SUBMIT', val: this.state.input})}>Submit</button>
+        <button onClick={() => this.props.dispatch({type: 'EAT_OREOS'})}>Eat All Oreos</button>
+        <ElementForm />
+        <ElementList />
       </div>
     );
   }
